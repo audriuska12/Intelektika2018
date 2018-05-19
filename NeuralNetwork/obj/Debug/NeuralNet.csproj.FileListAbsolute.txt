@@ -43,3 +43,13 @@ C:\Users\FrankonisAudrius\Desktop\C#\NeuralNetwork\obj\Debug\NeuralNet.csproj.Ge
 C:\Users\FrankonisAudrius\Desktop\C#\NeuralNetwork\obj\Debug\NeuralNet.csproj.CoreCompileInputs.cache
 C:\Users\FrankonisAudrius\Desktop\C#\NeuralNetwork\obj\Debug\NeuralNetwork.exe
 C:\Users\FrankonisAudrius\Desktop\C#\NeuralNetwork\obj\Debug\NeuralNetwork.pdb
+C:\Users\FrankonisAudrius\Documents\Programs\Intelektika2018\NeuralNetwork\bin\Debug\NeuralNetwork.exe.config
+C:\Users\FrankonisAudrius\Documents\Programs\Intelektika2018\NeuralNetwork\bin\Debug\NeuralNetwork.exe
+C:\Users\FrankonisAudrius\Documents\Programs\Intelektika2018\NeuralNetwork\bin\Debug\NeuralNetwork.pdb
+C:\Users\FrankonisAudrius\Documents\Programs\Intelektika2018\NeuralNetwork\obj\Debug\NeuralNet.csprojAssemblyReference.cache
+C:\Users\FrankonisAudrius\Documents\Programs\Intelektika2018\NeuralNetwork\obj\Debug\NeuralNet.Form1.resources
+C:\Users\FrankonisAudrius\Documents\Programs\Intelektika2018\NeuralNetwork\obj\Debug\NeuralNetwork.Properties.Resources.resources
+C:\Users\FrankonisAudrius\Documents\Programs\Intelektika2018\NeuralNetwork\obj\Debug\NeuralNet.csproj.GenerateResource.cache
+C:\Users\FrankonisAudrius\Documents\Programs\Intelektika2018\NeuralNetwork\obj\Debug\NeuralNet.csproj.CoreCompileInputs.cache
+C:\Users\FrankonisAudrius\Documents\Programs\Intelektika2018\NeuralNetwork\obj\Debug\NeuralNetwork.exe
+C:\Users\FrankonisAudrius\Documents\Programs\Intelektika2018\NeuralNetwork\obj\Debug\NeuralNetwork.pdb

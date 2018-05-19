@@ -10,7 +10,7 @@ namespace NeuralNet
     {
         List<NormalizedDonor> TrainingDonors;
         List<NormalizedDonor> TestDonors;
-        NeuralNetwork nn = new NeuralNetwork(0.9, new int[] { 3, 3, 1 });
+        NeuralNetwork nn = new NeuralNetwork(0.05, new int[] { 3, 3, 1 });
 
         public Form1()
         {
@@ -29,13 +29,17 @@ namespace NeuralNet
         private void button1_Click(object sender, EventArgs e)
         {
             Random rng = new Random();
-            NormalizedDonor d = TestDonors[rng.Next(TestDonors.Count)];
-            double[] ins = { d.Year, d.OperationYear, d.AxillaryNodes };
-
-
-
-            nn.Run(new List<double>(ins));
-
+            int hits = 0;
+            foreach (NormalizedDonor d in TestDonors)
+            {
+                double[] ins = { d.Year, d.OperationYear, d.AxillaryNodes };
+                double rez = nn.Run(new List<double>(ins))[0];
+                if (Math.Abs(rez - d.Status) < 0.5)
+                {
+                    hits++;
+                }
+            }
+            lblTestAcc.Text = String.Format("Paskutinio testo tikslumas: {0:0.00}%", (100.0 * hits) / TestDonors.Count);
             NetworkHelper.ToTreeView(treeView1, nn);
             NetworkHelper.ToPictureBox(pictureBox1, nn,400, 100);
         }
@@ -43,12 +47,24 @@ namespace NeuralNet
         private void button2_Click(object sender, EventArgs e)
         {
             Random rng = new Random();
-            for (int i = 0; i < 100000; i++) {
+            int iter = (int)(numIterations.Value);
+            List<NormalizedDonor> norms = new List<NormalizedDonor>();
+            for (int i = 0; i < iter; i++) {
                 NormalizedDonor d = TrainingDonors[rng.Next(TrainingDonors.Count)];
+                norms.Add(d);
                 double[] ins = { d.Year, d.OperationYear, d.AxillaryNodes };
                 double[] ots = { d.Status };
                 nn.Train(new List<double>(ins), new List<double>(ots));
             }
+            int hits = 0;
+            foreach (NormalizedDonor n in norms) {
+                double[] ins = { n.Year, n.OperationYear, n.AxillaryNodes };
+                double rez = nn.Run(new List<double>(ins))[0];
+                if (Math.Abs(rez - n.Status) < 0.5) {
+                    hits++;
+                }
+            }
+            lblTrainAcc.Text = String.Format("Paskutinio apmokymo tikslumas: {0:0.00}%", (100.0*hits)/iter);
             NetworkHelper.ToTreeView(treeView1, nn);
             NetworkHelper.ToPictureBox(pictureBox1, nn,400, 100);
         }
@@ -56,7 +72,6 @@ namespace NeuralNet
         private List<Donor> ReadData()
         {
             List<Donor> DonorList = new List<Donor>();
-
             string[] lines = System.IO.File.ReadAllLines(@"haberman.data.txt");
 
             foreach( string line in lines)
@@ -64,8 +79,6 @@ namespace NeuralNet
                 string[] input = line.Split(',');
                 DonorList.Add(new Donor(int.Parse(input[0]), int.Parse(input[1]), int.Parse(input[2]), int.Parse(input[3])));
             }
-            
-
             return DonorList;
         }
 
@@ -112,6 +125,10 @@ namespace NeuralNet
             return norm;
         }
 
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
